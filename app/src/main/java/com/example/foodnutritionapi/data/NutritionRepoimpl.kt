@@ -1,22 +1,22 @@
 package com.example.foodnutritionapi.data
 
-import com.example.foodnutritionapi.data.model.Nutrition
+import com.example.foodnutritionapi.data.model.JokesAPI
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import java.io.IOException
 
-class NutritionRepoImpl(
+class JokesRepoImpl(
     private val api: Api
-) : NutritionRepo {
-    override suspend fun postNutrition(): Flow<Result<Nutrition>> {
+) : JokesRepo {
+    override suspend fun postJoke(): Flow<Result<JokesAPI>> {
         return flow {
             try {
-                val response = api.postNutrition()
+                val response = api.postJoke()
                 if (response.isSuccessful) {
-                    val nutrition = response.body()
-                    if (nutrition != null) {
-                        emit(Result.Success(nutrition))
+                    val joke = response.body()
+                    if (joke != null) {
+                        emit(Result.Success(joke))
                     } else {
                         emit(Result.Failure("No data found"))
                     }

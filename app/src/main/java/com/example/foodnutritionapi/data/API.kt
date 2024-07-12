@@ -1,16 +1,15 @@
 package com.example.foodnutritionapi.data
 
-import com.example.foodnutritionapi.data.model.Nutrition
+import com.example.foodnutritionapi.data.model.JokesAPI
 import retrofit2.Response
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface Api {
-    @POST("nutrition-details") //path
-    //since the api response was a JSON
-    suspend fun postNutrition(): Response<Nutrition> // The response is a single Nutrition object
+    @GET("random_joke") // Replace with the actual endpoint path
+    suspend fun postJoke(): Response<JokesAPI> // The response is a single JokesAPI object
 
-    //a good practice is to put the base url outside of the interface
     companion object {
-        const val BASE_URL = "https://recipe-food-nutrition.proxy-production.allthingsdev.co/"
+        const val BASE_URL = "https://jokes-api.proxy-production.allthingsdev.co/"
     }
 }
